@@ -23,6 +23,17 @@ class DetailProduct extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+          if (product.imagePath == null && product.imageUrl != null)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.network(
+                product.imageUrl!,
+                height: 260,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const SizedBox(height: 260),
+              ),
+            ),
           const SizedBox(height: 24),
           Text(
             product.category.toUpperCase(),
